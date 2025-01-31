@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Počasie</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+         <div class="sidebar">
+           <div>
+             <form class="search" autocomplete="off" id="search">
+               <input type="text" id="query" placeholder="Hľadať..." />
+               <button><i class="fas fa-search"></i></button>
+             </form>
+             <div class="weather-icon">
+               <img id="icon" src="" alt="" />
+             </div>
+             <div class="location">
+               <i class="fas fa-map-marker-alt"></i>
+               <div class="location-icon">
+                 <p id="location">Lokácia</p>
+                </div>
+                <div class="location-text">
+                </div>
+             </div>
+             <div class="temperature">
+               <h1 id="temp">0</h1>
+               <span class="temp-unit">°C</span>
+             </div>
+             <div class="date-time">
+               <p id="date-time">Pondelok, 12:00</p>
+             </div>
+             <div class="divider"></div>
+             <div class="ar">
+              <a href="index.html" class="arduino-web">Hl. stránka</a>
+            </div>
+           </div>
+         </div>
+         <div class="main">
+           <p class="credits">By Tomáš Šimčik, Simeon Srňanský</p>
+         </div>
+       </div>
+
+       <script src="arduinoscript.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

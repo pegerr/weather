@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Počasie</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <link rel="stylesheet" href="style.css">
+</head>
+<body>
+     <div class="wrapper">
+          <div class="sidebar">
+            <div class="sk">
+              <form class="search" autocomplete="off" id="search">
+                <input type="text" id="query" placeholder="Hľadať..." />
+                <button><i class="fas fa-search"></i></button>
+              </form>
+              <div class="weather-icon">
+                <img id="icon" src="" alt="" />
+              </div>
+              <div class="location">
+                <i class="fas fa-map-marker-alt"></i>
+                <div class="location-icon">
+                  <p id="location">Lokácia</p>
+                 </div>
+                 <div class="location-text">
+                 </div>
+              </div>
+              <div class="temperature">
+                <h1 id="temp">0</h1>
+                <span class="temp-unit">°C</span>
+              </div>
+              <div class="date-time">
+                <p id="date-time">Pondelok, 12:00</p>
+              </div>
+              <div class="divider"></div>
+              <div class="condition-rain">
+                <div class="condition">
+                  <i class="fas fa-cloud"></i>
+                  <p id="condition">Stav</p>
+                </div>
+                <div class="rain">
+                  <i class="fas fa-tint"></i>
+                  <p id="rain">Zrážky</p>
+                </div>
+              </div>
+              <div class="ar">
+                <a href="arduino.html" class="arduino-web">Arduino</a>
+              </div>
+            </div>
+          </div>
+          <div class="main">
+            <nav>
+              <ul class="options">
+                <button class="hourly">Dnešné</button>
+                <button class="week active">Tyždenné</button>
+              </ul>
+              <ul class="options units">
+                <button class="celcius active">°C</button>
+                <button class="fahrenheit">°F</button>
+              </ul>
+            </nav>
+            <div class="cards hourly-cards" id="hourly-cards"></div>
+            <div class="cards" id="weather-cards"></div>
+            <div class="highlights">
+              <h2 class="heading">Dnešné hodnoty</h2>
+              <div class="cards">
+                <div class="card2">
+                  <h4 class="card-heading">Oblačnosť</h4>
+                  <div class="content">
+                    <p class="clouds-percentage">0</p>
+                    <p class="cp-status">Jasno</p>
+                  </div>
+                </div>
+                <div class="card2">
+                  <h4 class="card-heading">Rýchlosť vetra</h4>
+                  <div class="content">
+                    <p class="wind-speed">0</p>
+                    <p>km/h</p>
+                  </div>
+                </div>
+                <div class="card2">
+                  <h4 class="card-heading">Východ & západ slnka</h4>
+                  <div class="content">
+                    <p class="sun-rise">0</p>
+                    <p class="sun-set">0</p>
+                  </div>
+                </div>
+                <div class="card2">
+                  <h4 class="card-heading">Vlhkosť</h4>
+                  <div class="content">
+                    <p class="humidity">0</p>
+                    <p class="humidity-status">Nízká</p>
+                  </div>
+                </div>
+                <div class="card2">
+                  <h4 class="card-heading">Viditeľnosť</h4>
+                  <div class="content">
+                    <p class="visibilty">0</p>
+                    <p class="visibilty-status">Hustá hmla</p>
+                  </div>
+                </div>
+                <div class="card2">
+                  <h4 class="card-heading">Tlak</h4>
+                  <div class="content">
+                    <p class="pressure">0</p>
+                    <p class="pressure-status">hPa</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="credits">By Tomáš Šimčik, Simeon Srňanský</p>
+          </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="script.js"></script>
+</body>
+</html>

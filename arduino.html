@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Počasie</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div></div>
-    <div class="wrapper"> 
+    <div id="realtime" class="wrapper"> 
          <div class="sidebar">
            <div>
              <div class="weather-icon">
@@ -24,24 +25,57 @@
                 </div>
              </div>
              <div class="temperature">
-               <h1 id="temp">0</h1>
-               <span class="temp-unit">°C</span>
+               <h1 id="field-temp">0</h1>
+               <span class="temp-unit" id="temp-unit">°C</span>
              </div>
              <div class="date-time">
                <p id="date-time">Pondelok, 13:00</p>
              </div>
              <div class="divider"></div>
              <div class="ar">
-              <a href="index.html" class="arduino-web">Hl. stránka</a>
+              <a href="index.html" class="arduino-web">Späť na Hl. stránku</a>
             </div>
            </div>
          </div>
          <div class="main">
-           <p class="credits">By Tomáš Šimčik, Simeon Srňanský</p>
-         </div>
-       </div>
-
-       <script src="arduinoscript.js"></script>
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+          <nav>
+            <ul class="options units" id="units">
+              <button class="celcius active">°C</button>
+              <button class="fahrenheit">°F</button>
+            </ul>
+          </nav>
+          <div class="cards hourly-cards" id="hourly-cards"></div>
+          <div class="cards" id="weather-cards"></div>
+          <div class="highlights">
+            <h2 class="heading">Aktuálne namerané hodnoty</h2>
+            <div class="cards">
+              <div class="card2">
+                <h4 class="card-heading">Oblačnosť</h4>
+                <div class="content">
+                  <p class="clouds-percentage" id="field-light">0</p>
+                  <p class="cp-status" id="light-status">Jasno</p>
+                </div>
+              </div>
+              <div class="card2">
+                <h4 class="card-heading">Vlhkosť</h4>
+                <div class="content">
+                  <p id="field-humidity" class="humidity">0</p>
+                  <p class="humidity-status">Nízká</p>
+                </div>
+              </div>
+              <div class="card2">
+                <h4 class="card-heading">Tlak</h4>
+                <div class="content">
+                  <p id="field-pressure" class="pressure">0</p>
+                  <p class="pressure-status">hPa</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="credits">By Tomáš Šimčik, Simeon Srňanský</p>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="pocketbase.umd.js"></script>
+        <script src="arduinoscript.js"></script>
 </body>
 </html>

@@ -117,10 +117,15 @@ img {
   object-fit: contain;
 }
 
+.refresh:hover {
+  color: #fff;
+  background-color: #1a1a1a;
+}
+
 .temperature {
   display: flex;
 }
-.temperature #temp {
+.temperature #temp-field {
   font-size: 70px;
   font-weight: 100;
   line-height: 1;

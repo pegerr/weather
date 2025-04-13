@@ -259,7 +259,6 @@ img {
   width: 100%;
   font-size: 20px;
   font-weight: 600;
-  text-transform: capitalize;
 }
 
 .card2 {
@@ -336,4 +335,11 @@ img {
 .arduino-web:active {
   transform: scale(0.98);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.arduinobody {
+  background-image: url('https://cdn.pixabay.com/photo/2023/10/28/09/20/darling-8346954_1280.jpg');
+  background-size: cover;         
+  background-repeat: no-repeat;
+  background-position: center;  
 }

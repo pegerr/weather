@@ -14,7 +14,6 @@ body {
   display: flex;
   justify-content: center;
   min-height: 100vh;
-  min-width: 1000px;
   padding: 50px;
   background: var(--primary-color);
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
@@ -27,8 +26,8 @@ img {
 }
 .wrapper {
   display: flex;
-  width: 1200px;
-  min-width: 900px;
+  max-width: 1200px;
+  width: 100%;
   border-radius: 20px;
   overflow: hidden;
 }
@@ -41,6 +40,7 @@ img {
   flex-direction: column;
   justify-content: space-between;
 }
+
 
 .sk{
   display: flex;
@@ -213,15 +213,20 @@ img {
   display: none;
 }
 
+.main > .cards {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
 .main .cards {
-  display: flex;
+  display: grid;
   flex-wrap: wrap;
   gap: 20px;
   margin-top: 50px;
 }
 
 .cards .card {
-  width: 100px;
+  /* width: 100px; */
   height: 130px;
   border-radius: 20px;
   color: #1a1a1a;
@@ -261,9 +266,15 @@ img {
   font-weight: 600;
 }
 
+.highlights .cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+}
+
 .card2 {
-  width: 250px;
-  height: 150px;
+  /* width: 250px; */
+  /* height: 150px; */
   border-radius: 20px;
   color: #1a1a1a;
   background-color: #fff;
@@ -342,4 +353,61 @@ img {
   background-size: cover;         
   background-repeat: no-repeat;
   background-position: center;  
+}
+
+@media (max-width: 1200px) {
+  .main > .cards {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 991px) {
+  .main {
+    padding: 20px;
+    min-width: unset;
+  }
+  .main > .cards {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .main > .cards .card {
+    height: auto;
+  }
+  .sidebar {
+    width: 100%;
+  }
+  .wrapper {
+    flex-direction: column;
+  }
+  .weather-icon {
+    max-width: 128px;
+  }
+  .ar {
+    margin: 24px auto;
+  }
+  body {
+    padding: 15px;
+  }
+  .credits {
+    position: relative;
+    bottom: 0;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .highlights .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .main > .cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 578px) {
+  .highlights .cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .main > .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

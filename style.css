@@ -39,6 +39,7 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 }
 
 
@@ -115,6 +116,7 @@ img {
 }
 .weather-icon img {
   object-fit: contain;
+  width: auto;
 }
 
 .refresh:hover {
@@ -323,6 +325,13 @@ img {
   margin: auto 0 60px;
 }
 
+.arduinobody .ar {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%, 0);  
+}
+
 .arduino-web {
   background: #5598fd;
   color: white;
@@ -353,6 +362,14 @@ img {
   background-size: cover;         
   background-repeat: no-repeat;
   background-position: center;  
+}
+
+.ar {
+  text-align: center;
+}
+
+.mb-3 {
+  margin-bottom: 24px;
 }
 
 @media (max-width: 1200px) {
@@ -393,6 +410,13 @@ img {
     position: relative;
     bottom: 0;
     margin-top: 20px;
+  }
+  
+  .arduinobody .ar {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    transform: translate(0, 0);  
   }
 }
 

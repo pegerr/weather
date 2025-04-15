@@ -108,8 +108,8 @@ img {
   background-color: #f1f1f1;
 }
 .weather-icon {
-  aspect-ratio: 1;
-  text-align: center;
+  /* aspect-ratio: 1; */
+  /* text-align: center; */
   /* margin-top: 20px; */
   margin-bottom: 10px;
 }
@@ -378,11 +378,13 @@ img {
   .wrapper {
     flex-direction: column;
   }
-  .weather-icon {
+  .weather-icon img {
     max-width: 128px;
+    width: auto;
   }
   .ar {
     margin: 24px auto;
+    text-align: center;
   }
   body {
     padding: 15px;

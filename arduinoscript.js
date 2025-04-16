@@ -1,4 +1,4 @@
-const pb = new PocketBase("http://192.168.178.4:8090/");
+const pb = new PocketBase("http://127.0.0.1:8090/");
 pb.autoCancellation(false)
 
 const days = ["Nedeľa", "Pondelok", "Utorok", "Streda", "Štvrtok", "Piatok"]
@@ -29,9 +29,9 @@ async function pull() {
     const first = items[0]
 
     elements.tempUnit.innerHTML = currentUnit
-    elements.tempField.innerHTML = `${currentUnit.includes("C") ? first.temperature.toFixed(2) : (first.temperature * 1.8 +32).toFixed(2)}`
-    elements.pressureField.innerHTML = `${first.pressure.toFixed(2)}`
-    elements.humidityField.innerHTML = `${first.humidity.toFixed(2)}%`
+    elements.tempField.innerHTML = `${currentUnit.includes("C") ? first.temperature.toFixed(1) : (first.temperature * 1.8 +32).toFixed(1)}`
+    elements.pressureField.innerHTML = `${first.pressure.toFixed(1)}`
+    elements.humidityField.innerHTML = `${first.humidity.toFixed(1)}%`
     elements.lightField.innerHTML = `${Math.max(Math.min((100 - first.light.toFixed(2)), 100), 0)}%`
     elements.lightStatus.innerHTML = cloudiness[Math.min(Math.floor((100 - first.light) / (100 / cloudiness.length)), cloudiness.length-1)]
 }

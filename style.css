@@ -14,7 +14,6 @@ body {
   display: flex;
   justify-content: center;
   min-height: 100vh;
-  min-width: 1000px;
   padding: 50px;
   background: var(--primary-color);
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
@@ -27,8 +26,8 @@ img {
 }
 .wrapper {
   display: flex;
-  width: 1200px;
-  min-width: 900px;
+  max-width: 1200px;
+  width: 100%;
   border-radius: 20px;
   overflow: hidden;
 }
@@ -40,7 +39,9 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 }
+
 
 .sk{
   display: flex;
@@ -108,13 +109,14 @@ img {
   background-color: #f1f1f1;
 }
 .weather-icon {
-  aspect-ratio: 1;
-  text-align: center;
+  /* aspect-ratio: 1; */
+  /* text-align: center; */
   /* margin-top: 20px; */
   margin-bottom: 10px;
 }
 .weather-icon img {
   object-fit: contain;
+  width: auto;
 }
 
 .refresh:hover {
@@ -213,15 +215,20 @@ img {
   display: none;
 }
 
+.main > .cards {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
 .main .cards {
-  display: flex;
+  display: grid;
   flex-wrap: wrap;
   gap: 20px;
   margin-top: 50px;
 }
 
 .cards .card {
-  width: 100px;
+  /* width: 100px; */
   height: 130px;
   border-radius: 20px;
   color: #1a1a1a;
@@ -259,12 +266,17 @@ img {
   width: 100%;
   font-size: 20px;
   font-weight: 600;
-  text-transform: capitalize;
+}
+
+.highlights .cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
 }
 
 .card2 {
-  width: 250px;
-  height: 150px;
+  /* width: 250px; */
+  /* height: 150px; */
   border-radius: 20px;
   color: #1a1a1a;
   background-color: #fff;
@@ -313,6 +325,13 @@ img {
   margin: auto 0 60px;
 }
 
+.arduinobody .ar {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%, 0);  
+}
+
 .arduino-web {
   background: #5598fd;
   color: white;
@@ -336,4 +355,85 @@ img {
 .arduino-web:active {
   transform: scale(0.98);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.arduinobody {
+  background-image: url('https://cdn.pixabay.com/photo/2023/10/28/09/20/darling-8346954_1280.jpg');
+  background-size: cover;         
+  background-repeat: no-repeat;
+  background-position: center;  
+}
+
+.ar {
+  text-align: center;
+}
+
+.mb-3 {
+  margin-bottom: 24px;
+}
+
+@media (max-width: 1200px) {
+  .main > .cards {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 991px) {
+  .main {
+    padding: 20px;
+    min-width: unset;
+  }
+  .main > .cards {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .main > .cards .card {
+    height: auto;
+  }
+  .sidebar {
+    width: 100%;
+  }
+  .wrapper {
+    flex-direction: column;
+  }
+  .weather-icon img {
+    max-width: 128px;
+    width: auto;
+  }
+  .ar {
+    margin: 24px auto;
+    text-align: center;
+  }
+  body {
+    padding: 15px;
+  }
+  .credits {
+    position: relative;
+    bottom: 0;
+    margin-top: 20px;
+  }
+  
+  .arduinobody .ar {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    transform: translate(0, 0);  
+  }
+}
+
+@media (max-width: 768px) {
+  .highlights .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .main > .cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 578px) {
+  .highlights .cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .main > .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

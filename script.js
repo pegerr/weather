@@ -61,7 +61,7 @@ setInterval(() => {
 
 function getWeatherData(city, unit, hourlyorWeek) {
   fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=2976071bd3e952aefe6d2d8daa77fd07`,
+    `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=2976071bd3e952aefe6d2d8daa77fd07`,
     {
       method: "GET",
     }
@@ -451,14 +451,14 @@ function changeUnit(unit) {
 }
 
 hourlyBtn.addEventListener("click", () => {
-  document.getElementById("hourly-cards").style.display = "flex";
+  document.getElementById("hourly-cards").style.display = "grid";
   document.getElementById("weather-cards").style.display = "none";
   changeTimeSpan("hourly");
 });
 
 weekBtn.addEventListener("click", () => {
   document.getElementById("hourly-cards").style.display = "none";
-  document.getElementById("weather-cards").style.display = "flex";
+  document.getElementById("weather-cards").style.display = "grid";
   changeTimeSpan("week");
 });
 

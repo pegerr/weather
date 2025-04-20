@@ -273,6 +273,7 @@ function getDayName(date, i) {
   let day = new Date();
   index = day.getDay() + i;
   let days = [
+    "Nedeľa",
     "Pondelok",
     "Utorok",
     "Streda",
@@ -288,7 +289,7 @@ function getDayName(date, i) {
     "Sobota",
 
   ];
-  return days[index - 1];
+  return days[index];
 }
 
 function updateCloudsStatus(clouds){

@@ -19,11 +19,9 @@ const elements = {
 async function pull() {
     const now = new Date(Date.now())
     elements.date.innerHTML = `${days[now.getDay()]}, ${now.getHours()}:${(now.getMinutes()).toString().padStart(2, '0')}`
-
     const items = (await pb.collection("measurements").getList(1, 1, {
         sort:'-created'
     })).items
-
     if(!items || items.length == 0) return
 
     const first = items[0]

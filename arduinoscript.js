@@ -1,4 +1,4 @@
-const pb = new PocketBase("http://127.0.0.1:8090/");
+const pb = new PocketBase("https://pocasicko.pockethost.io");
 pb.autoCancellation(false)
 
 const days = ["Nedeľa", "Pondelok", "Utorok", "Streda", "Štvrtok", "Piatok"]

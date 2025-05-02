@@ -2,7 +2,6 @@ const pb = new PocketBase("https://pocasicko.pockethost.io");
 pb.autoCancellation(false);
 
 const days = ["Nedeľa", "Pondelok", "Utorok", "Streda", "Štvrtok", "Piatok"];
-const cloudiness = ["Jasno", "Polojasno", "Polooblacno", "Oblacno"];
 
 const outDevice = "hmlz37j3qt4j2et";
 const inDevice = "d39pf9b4l235921";
@@ -14,6 +13,7 @@ const elements = {
     tempOut: document.getElementById("Out-temp"),
     pressureOut: document.getElementById("Out-pressure"),
     humidityOut: document.getElementById("Out-humidity"),
+    
     lightOut: document.getElementById("Out-light"),
 
     tempIn: document.getElementById("In-temp"),
@@ -48,14 +48,14 @@ async function pull() {
 
     elements.tempOut.innerHTML = `${currentUnit.includes("C") ? Out.temperature.toFixed(1) : (Out.temperature * 1.8 + 32).toFixed(1)}`;
     elements.pressureOut.innerHTML = `${Out.pressure.toFixed(1)}`;
-    elements.humidityOut.innerHTML = `${Out.humidity.toFixed(1)}%`;
+    elements.humidityOut.innerHTML = `${Out.humidity.toFixed(0)}%`;
+    
     elements.lightOut.innerHTML = `${Out.light.toFixed(1)}`;
-
     elements.lightStatus.innerHTML = `lm`;
 
     elements.tempIn.innerHTML = `${currentUnit.includes("C") ? In.temperature.toFixed(1) : (In.temperature * 1.8 + 32).toFixed(1)}`;
     elements.pressureIn.innerHTML = `${In.pressure.toFixed(1)}`;
-    elements.humidityIn.innerHTML = `${In.humidity.toFixed(1)}%`;
+    elements.humidityIn.innerHTML = `${In.humidity.toFixed(0)}%`;
     elements.lightIn.innerHTML = `${In.light.toFixed(1)}`;
 }
 
@@ -71,3 +71,15 @@ $('#units').children().first().click();
 
 pull();
 setInterval(() => pull(), 1000);
+
+function updateHumidityStatus(humidity) {
+  if (humidity <= 30) {
+    humidityStatus.innerText = "Nízká";
+  } else if (humidity <= 60) {
+    humidityStatus.innerText = "Stredná";
+  } else {
+    humidityStatus.innerText = "Vysoká";
+  }
+}
+
+

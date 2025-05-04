@@ -1,21 +1,21 @@
-#include <Wire.h>               // Knižnica pre komunikáciu cez I2C
-#include <Adafruit_Sensor.h>    // Knižnica pre senzor
-#include <Adafruit_BMP085_U.h>  // Knižnica pre BMP180
+#include <Wire.h>
+#include <Adafruit_Sensor.h>    
+#include <Adafruit_BMP085_U.h>  
 #include <DHT.h>
-#include <WiFi.h>//<WiFi.h>
+#include <WiFi.h>
 #include <WiFiMulti.h>
 #include <HTTPClient.h>
 #include "Adafruit_VEML7700.h"
 #include <NetworkClientSecure.h>
 
 
-#define DHTPIN 5       // what pin we're connected to
-#define DHTTYPE DHT11  // DHT 11  (AM2302)
+#define DHTPIN 5 
+#define DHTTYPE DHT11  
 DHT dht(DHTPIN, DHTTYPE);
 
 Adafruit_VEML7700 veml = Adafruit_VEML7700();
 
-// Vytvorenie objektu pre senzor
+
 Adafruit_BMP085_Unified bmp;
 
 #define SERVER_IP "https://pocasicko.pockethost.io"
@@ -56,7 +56,7 @@ int sendToServer(float temp, float pressure, float humidity, float light) {
 
   client->setCACert(rootCACertificate);
 
-  http.begin(*client, String(SERVER_IP) + String(UPLOAD_ENDPOINT));  // HTTP
+  http.begin(*client, String(SERVER_IP) + String(UPLOAD_ENDPOINT));
   http.addHeader("Content-Type", "application/json");
 
   String str =    String("{\"token\":\"") + String(DEVICE_TOKEN) + String("\",") +
@@ -88,7 +88,7 @@ void connectToWiFi() {
   WiFi.mode(WIFI_STA);
   WiFiMulti.addAP(ssid, password);
 
-  // wait for WiFi connection
+
   Serial.print("Waiting for WiFi to connect...");
   while ((WiFiMulti.run() != WL_CONNECTED)) {
     Serial.print(".");
@@ -100,20 +100,19 @@ void connectToWiFi() {
 }
 
 void setup() {
-  // Začneme sériovú komunikáciu
-  Serial.begin(115200);  // Pre ESP8266 odporúčame vyšší baud rate
+  Serial.begin(115200);  
 
   connectToWiFi();
 
-  // Nastavenie I2C pre ESP8266 (predvolené piny pre I2C sú GPIO4 a GPIO5)
-  Wire.begin();  // Automaticky používa GPIO4 (SDA) a GPIO5 (SCL)
+
+  Wire.begin();
   dht.begin();
 
-  // Inicializácia BMP180
+
   if (!bmp.begin()) {
     Serial.println("Nepodarilo sa inicializovať senzor BMP180");
     while (1)
-      ;  // Ak sa senzor nepodarí inicializovať, zastavíme program
+      ;  
   }
 
   if (!veml.begin()) {
@@ -127,10 +126,8 @@ void setup() {
 }
 
 void loop() {
-  // Premenné pre hodnoty z BMP180
   sensors_event_t event;
 
-  // Získanie hodnoty tlaku
   bmp.getEvent(&event);
 
   Serial.print("Tlak: ");

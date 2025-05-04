@@ -93,9 +93,6 @@ function getWeatherData(city, unit, hourlyorWeek) {
       Promise.all([hourlyResponse.json(), dailyResponse.json(), currentWeatherResponse.json()])
     )
     .then(([hourlyData, dailyData, currentWeatherData]) => {
-      console.log("Hourly Data:", hourlyData);
-      console.log("Daily Data:", dailyData);
-      console.log("Current Weather Data:", currentWeatherData);
 
       const iconCode = currentWeatherData.weather[0].icon;
       const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@4x.png`;
@@ -148,25 +145,18 @@ function getWeatherData(city, unit, hourlyorWeek) {
     else{
       rain.innerText = "Zrážky: 0 mm/h";
     }
-      updateForecast(currentWeatherData, dailyData, hourlyData, unit, "week");
-
-      if (hourlyorWeek === "hourly") {
-        console.log("Hourly forecast:", hourlyData);
-      } else if (hourlyorWeek === "week") {
-        console.log("Weekly forecast:", dailyData);
-      }
+      updateForecast(dailyData, hourlyData, unit);
     })
     .catch((err) => {
       console.error("Error fetching weather data:", err);
     });
 }
 
-function updateForecast(currentData, forecastData, hourlyData, unit, type) {
+function updateForecast(forecastData, hourlyData, unit) {
   weatherCards.innerHTML = "";
   hourlyCards.innerHTML = "";
-  let numCards = 7;
  
-  for (let i = 0; i < numCards; i++) {
+  for (let i = 0; i < 7; i++) {
       let card = document.createElement("div");
       card.classList.add("card");
       dayName = getDayName(forecastData.list[i].dt, i);
@@ -247,7 +237,6 @@ function updateForecast(currentData, forecastData, hourlyData, unit, type) {
 
 function changeBackground(condition) {
   const body = document.querySelector("body");
-  console.log(condition);
   let bg = "";
   if (condition === "Clouds") {
     bg = "https://cdn.pixabay.com/photo/2022/03/06/05/30/clouds-7050884_1280.jpg";
@@ -357,7 +346,6 @@ search.addEventListener("input", async function (e) {
     return false;
   }
 
-  let currentFocus = -1;
   const a = document.createElement("ul");
   a.setAttribute("id", "suggestions");
   this.parentNode.appendChild(a);
@@ -404,21 +392,6 @@ function removeSuggestions() {
   const suggestions = document.getElementById("suggestions");
   if (suggestions) {
     suggestions.parentNode.removeChild(suggestions);
-  }
-}
-
-var currentFocus;
-
-function addActive(x) {
-  if (!x) return false;
-  removeActive(x);
-  if (currentFocus >= x.length) currentFocus = 0;
-  if (currentFocus < 0) currentFocus = x.length - 1;
-  x[currentFocus].classList.add("active");
-}
-function removeActive(x) {
-  for (var i = 0; i < x.length; i++) {
-    x[i].classList.remove("active");
   }
 }
 

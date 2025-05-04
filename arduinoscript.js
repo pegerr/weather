@@ -13,12 +13,14 @@ const elements = {
     tempOut: document.getElementById("Out-temp"),
     pressureOut: document.getElementById("Out-pressure"),
     humidityOut: document.getElementById("Out-humidity"),
+    humidityStatusOut: document.getElementById("humidity-status-out"),
     
     lightOut: document.getElementById("Out-light"),
 
     tempIn: document.getElementById("In-temp"),
     pressureIn: document.getElementById("In-pressure"),
     humidityIn: document.getElementById("In-humidity"),
+    humidityStatusIn: document.getElementById("humidity-status-in"),
     lightIn: document.getElementById("In-light"),
 
     date: document.getElementById("date-time"),
@@ -32,6 +34,18 @@ async function fetchDeviceData(deviceId) {
     });
 
     return list.items[0];
+}
+
+function updateHumidityStatus(humidity) {
+  var status;
+  if (humidity <= 30) {
+    status = "Nízká";
+  } else if (humidity <= 60) {
+    status = "Stredná";
+  } else {
+    status = "Vysoká";
+  }
+  return status;
 }
 
 async function pull() {
@@ -49,6 +63,7 @@ async function pull() {
     elements.tempOut.innerHTML = `${currentUnit.includes("C") ? Out.temperature.toFixed(1) : (Out.temperature * 1.8 + 32).toFixed(1)}`;
     elements.pressureOut.innerHTML = `${Out.pressure.toFixed(1)}`;
     elements.humidityOut.innerHTML = `${Out.humidity.toFixed(0)}%`;
+    elements.humidityStatusOut.innerHTML = updateHumidityStatus(Out.humidity.toFixed(0));
     
     elements.lightOut.innerHTML = `${Out.light.toFixed(1)}`;
     elements.lightStatus.innerHTML = `lm`;
@@ -56,6 +71,7 @@ async function pull() {
     elements.tempIn.innerHTML = `${currentUnit.includes("C") ? In.temperature.toFixed(1) : (In.temperature * 1.8 + 32).toFixed(1)}`;
     elements.pressureIn.innerHTML = `${In.pressure.toFixed(1)}`;
     elements.humidityIn.innerHTML = `${In.humidity.toFixed(0)}%`;
+    elements.humidityStatusIn.innerHTML = updateHumidityStatus(In.humidity.toFixed(0));
     elements.lightIn.innerHTML = `${In.light.toFixed(1)}`;
 }
 
@@ -72,14 +88,5 @@ $('#units').children().first().click();
 pull();
 setInterval(() => pull(), 1000);
 
-function updateHumidityStatus(humidity) {
-  if (humidity <= 30) {
-    humidityStatus.innerText = "Nízká";
-  } else if (humidity <= 60) {
-    humidityStatus.innerText = "Stredná";
-  } else {
-    humidityStatus.innerText = "Vysoká";
-  }
-}
 
 

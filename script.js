@@ -106,7 +106,7 @@ function getWeatherData(city, unit, hourlyorWeek) {
         temp.innerText = celciusToFahrenheit(currentWeatherData.main.temp - 273.15).toFixed(1);
       }
 
-      currentLocation.innerText = currentWeatherData.name;
+      currentLocation.innerText = city;
       clouds.innerText = currentWeatherData.clouds.all + "%";
       updateCloudsStatus(currentWeatherData.clouds.all);
       windSpeed.innerText = Math.round(currentWeatherData.wind.speed * 3.6);
